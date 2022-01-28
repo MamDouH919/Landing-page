@@ -112,6 +112,12 @@ button {
 .navbar__menu li:hover a{
     color: #fff;
 }
+.navbar__menu{
+    display: none;
+}
+.show{
+    display: block;
+}
 .navbar__menu .menu__link {
     display: block;
     padding: 1em;
@@ -120,6 +126,19 @@ button {
     color: #000;
 }
 .navbar__menu .menu__link:hover {
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+    transition: ease 0.3s all;
+}
+.icon{
+    display: block;
+    padding: 1em;
+    font-size: 22px;
+    text-decoration: none;
+    color: #000;
+}
+.icon:hover {
     background: #333;
     color: #fff;
     cursor: pointer;

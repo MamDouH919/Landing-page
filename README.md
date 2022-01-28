@@ -6,8 +6,74 @@
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+**Build the navigation menu.**
+```javascript
 
-To get started, open `js/app.js` and start building out the app's functionality
+for (condition){
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+    Adding list navigation
+
+}
+
+```
+**Add functionality to distinguish the section in view**
+```javascript
+
+const SetActiveSection = function(){
+    section.forEach(function(v) {
+        let rect = v.getBoundingClientRect();
+    }
+}
+
+}
+
+```
+**Add functionality to distinguish the list of section in view**
+select all lists,
+
+```javascript
+
+function setActiveClass() {
+    if (window.scrollY >= firstsection.offsetTop) {
+        alllist.forEach((link) => {
+        link.classList.remove("active");
+        });
+        firstsecList.classList.add("active");
+    }
+}
+
+```
+**Add the functionality to scroll to sections**
+select all lists,
+
+```javascript
+
+firstLink.addEventListener("click", function(e){
+    e.preventDefault();
+    document.body.scrollTo({
+        top: firstsection.offsetTop,
+        behavior: 'smooth'
+    })
+})
+
+```
+
+**Responsive landing page**
+first : build new menu to suits the mobiles and small width
+second : put it in icon when on click open
+
+```javascript
+var res = window.matchMedia("(max-width: 600px)");
+
+function Responsive(res) {
+    if(matched){
+        set menu list
+    }
+    else{
+        set navigation
+    }
+
+}
+
+
+```
