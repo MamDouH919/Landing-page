@@ -28,30 +28,16 @@ const SetActiveSection = function(){
 }
 
 ```
-**Add functionality to distinguish the list of section in view**
-select all lists,
 
-```javascript
-
-function setActiveClass() {
-    if (window.scrollY >= firstsection.offsetTop) {
-        alllist.forEach((link) => {
-        link.classList.remove("active");
-        });
-        firstsecList.classList.add("active");
-    }
-}
-
-```
 **Add the functionality to scroll to sections**
 select all lists,
 
 ```javascript
-
-firstLink.addEventListener("click", function(e){
+const targetSection = document.querySelector('ul')
+targetSection.addEventListener("click", function(e){
     e.preventDefault();
     document.body.scrollTo({
-        top: firstsection.offsetTop,
+        top: document.querySelector(targetHref).offsetTop,
         behavior: 'smooth'
     })
 })

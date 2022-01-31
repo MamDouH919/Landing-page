@@ -124,6 +124,7 @@ button {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    text-align: left;
 }
 .navbar__menu .menu__link:hover {
     background: #333;

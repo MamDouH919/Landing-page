@@ -57,7 +57,8 @@ for (let i = 1; i <= 4; i++) {
     const newLista = document.createElement('a');
     newLista.textContent = 'Section ' + i;
     newLista.id = "link" + i;
-    newList.id = 'sec' + i;
+    newLista.href = "#section" + i;
+    // newList.id = 'sec' + i;
     newList.appendChild(newLista);
     navbarList.appendChild(newList);
 }
@@ -78,84 +79,24 @@ const SetActiveSection = function(){
         };
 window.addEventListener("scroll", SetActiveSection);
 
-// Add class 'active' to list of nav when near top of viewport
-const navbar = document.querySelectorAll('li');
-const firstsecList = document.querySelector('#sec1');
-const secondSecList = document.querySelector('#sec2');
-const thirdSecList = document.querySelector('#sec3');
-const forthSecList = document.querySelector('#sec4');
-function setActiveClass() {
-    //NoSection
-    if (window.scrollY < section1.offsetTop-200) {
-        navbar.forEach((link) => {
-        link.classList.remove("active");
-        });
-    }
-    //Section1
-    if (window.scrollY >= section1.offsetTop-250) {
-        navbar.forEach((link) => {
-        link.classList.remove("active");
-        });
-        firstsecList.classList.add("active");
-    }
-    //Section2
-    if (window.scrollY >= section2.offsetTop-250) {
-        navbar.forEach((link) => {
-        link.classList.remove("active");
-        });
-        secondSecList.classList.add("active");
-    }
-    //Section3
-    if (window.scrollY >= section3.offsetTop-250) {
-        navbar.forEach((link) => {
-        link.classList.remove("active");
-        });
-        thirdSecList.classList.add("active");
-    }
-    //Section4
-    if (window.scrollY >= section4.offsetTop-250) {
-        navbar.forEach((link) => {
-        link.classList.remove("active");
-        });
-        forthSecList.classList.add("active");
-    }
-}
-    window.addEventListener('scroll', setActiveClass);
+
 // Scroll to anchor ID using scrollTO event
 
-const firstLink = document.querySelector('#link1');
-const thirdLink = document.querySelector('#link3');
-const secondLink = document.querySelector('#link2');
-const forthLink = document.querySelector('#link4');
-//function to scroll to the section
-firstLink.addEventListener("click", function(e){
+document.addEventListener("DOMContentLoaded", function() { 
+
+const targetSection = document.querySelector('ul');
+targetSection.addEventListener("click", 
+    function(e){
+        var targetHref = e.target.getAttribute("href");
+        // alert(targetHref);
     e.preventDefault();
     document.body.scrollTo({
-        top: section1.offsetTop,
-        behavior: 'smooth'
-    });
-});
-secondLink.addEventListener("click", function(e){
-    e.preventDefault();
-    document.body.scrollTo({
-        top: section2.offsetTop,
-        behavior: 'smooth'
-      });
-});
-thirdLink.addEventListener("click", function(e){
-    e.preventDefault();
-    document.body.scrollTo({
-        top: section3.offsetTop,
-        behavior: 'smooth'
-      });
-});
-forthLink.addEventListener("click", function(e){
-    e.preventDefault();
-    document.body.scrollTo({
-        top: section4.offsetTop,
-        behavior: 'smooth'
-      }); 
-});
+                top: document.querySelector(targetHref).offsetTop,
+                behavior: 'smooth'
+            });
+    })
+  });
+
 //function to back to top page
 button.addEventListener("click", function(e){
     e.preventDefault();
@@ -174,15 +115,22 @@ const menu = document.createElement('a')
 menu.classList = 'fa fa-bars icon'
 pageHeader.appendChild(menu)
 const navmenu = document.createElement('div')
-navmenu.classList = 'navbar__menu';
+navmenu.classList = 'navbar__menu menu';
+const menuUl = document.createElement('ul');
+navmenu.appendChild(menuUl)
+
 for (let i = 1; i <= 4; i++) {
+    const li = document.createElement('li');
     const links = document.createElement('a');
     links.textContent = 'Section ' + i;
-    links.classList = "menu__link";
+    li.classList = "menu__link";
     links.id = 'linksec' + i;
-    navmenu.appendChild(links);
+    links.href = "#section" + i;
+    li.appendChild(links);
+    menuUl.appendChild(li);
 }
 pageHeader.appendChild(navmenu)
+
 // Resposive to all devices
 function Responsive(res) {
   if (res.matches) {
@@ -228,50 +176,26 @@ var res = window.matchMedia("(max-width: 600px)");
 Responsive(res); // Call listener function at run time
 res.addEventListener("change", Responsive);
 res.addEventListener("refresh", Responsive);
+
 // Function to open the menu List
 menu.addEventListener("click", function(e){
     e.preventDefault();
     navmenu.classList.toggle("show");
 });
 
-
 // Scroll to section on link click
-const firstLinksec = document.querySelector('#linksec1');
-const thirdLinksec = document.querySelector('#linksec3');
-const secondLinksec = document.querySelector('#linksec2');
-const forthLinksec = document.querySelector('#linksec4');
-//function to scroll to the section
-firstLinksec.addEventListener("click", function(e){
+document.addEventListener("DOMContentLoaded", function () {
+  const targetSection = document.querySelector(".menu ul");
+  targetSection.addEventListener("click", function (e) {
+    var targetHref = e.target.getAttribute("href");
+    // alert(targetHref);
     e.preventDefault();
     navmenu.classList.toggle("show");
     document.body.scrollTo({
-        top: section1.offsetTop,
-        behavior: 'smooth'
+    top: document.querySelector(targetHref).offsetTop,
+    behavior: "smooth",
     });
-});
-secondLinksec.addEventListener("click", function(e){
-    e.preventDefault();
-    navmenu.classList.toggle("show");
-    document.body.scrollTo({
-        top: section2.offsetTop,
-        behavior: 'smooth'
-      });
-});
-thirdLinksec.addEventListener("click", function(e){
-    e.preventDefault();
-    navmenu.classList.toggle("show");
-    document.body.scrollTo({
-        top: section3.offsetTop,
-        behavior: 'smooth'
-      });
-});
-forthLinksec.addEventListener("click", function(e){
-    e.preventDefault();
-    navmenu.classList.toggle("show");
-    document.body.scrollTo({
-        top: section4.offsetTop,
-        behavior: 'smooth'
-      }); 
+  });
 });
 
 
