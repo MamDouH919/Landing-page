@@ -31,6 +31,8 @@ const section3 = document.querySelector('#section3');
 const section4 = document.querySelector('#section4');
 const pageHeader = document.querySelector('.page__header');
 var numberOfSection=document.getElementsByTagName('section');
+const section = document.querySelectorAll('section')
+
 
 
 
@@ -65,7 +67,6 @@ for (let i = 1; i <=numberOfSection.length ; i++) {
 }
 
 // Add class 'active' to section when near top of viewport
-const section = document.querySelectorAll('section')
 const SetActiveSection = function(){
             section.forEach(function(v) {
                 let rect = v.getBoundingClientRect();
@@ -87,8 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 const targetSection = document.querySelector('ul');
 targetSection.addEventListener("click", 
     function(e){
-        var targetHref = e.target.getAttribute("href");
-        // alert(targetHref);
+        let targetHref = e.target.getAttribute("href");
     e.preventDefault();
     document.body.scrollTo({
                 top: document.querySelector(targetHref).offsetTop,
@@ -119,7 +119,7 @@ navmenu.classList = 'navbar__menu menu';
 const menuUl = document.createElement('ul');
 navmenu.appendChild(menuUl)
 
-for (let i = 1; i <= 4; i++) {
+for (let i = 1; i <= numberOfSection.length; i++) {
     const li = document.createElement('li');
     const links = document.createElement('a');
     links.textContent = 'Section ' + i;
@@ -186,13 +186,14 @@ menu.addEventListener("click", function(e){
 // Scroll to section on link click
 document.addEventListener("DOMContentLoaded", function () {
   const targetSection = document.querySelector(".menu ul");
+  console.log(targetSection);
+
   targetSection.addEventListener("click", function (e) {
-    var targetHref = e.target.getAttribute("href");
-    // alert(targetHref);
+    var targetHrefLink = e.target.getAttribute("href");
     e.preventDefault();
-    navmenu.classList.toggle("show");
+    let top = document.querySelector(targetHrefLink).offsetTop
     document.body.scrollTo({
-    top: document.querySelector(targetHref).offsetTop,
+    top: top,
     behavior: "smooth",
     });
   });
