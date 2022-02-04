@@ -191,6 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
   targetSection.addEventListener("click", function (e) {
     var targetHrefLink = e.target.getAttribute("href");
     e.preventDefault();
+    navmenu.classList.toggle("show");
     let top = document.querySelector(targetHrefLink).offsetTop
     document.body.scrollTo({
     top: top,
