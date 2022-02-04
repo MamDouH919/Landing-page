@@ -30,6 +30,7 @@ const section2 = document.querySelector('#section2');
 const section3 = document.querySelector('#section3');
 const section4 = document.querySelector('#section4');
 const pageHeader = document.querySelector('.page__header');
+var numberOfSection=document.getElementsByTagName('section');
 
 
 
@@ -52,7 +53,7 @@ pageHeader.appendChild(button);
 
 // build the nav
 
-for (let i = 1; i <= 4; i++) {
+for (let i = 1; i <=numberOfSection.length ; i++) {
     const newList = document.createElement('li');
     const newLista = document.createElement('a');
     newLista.textContent = 'Section ' + i;
@@ -64,7 +65,6 @@ for (let i = 1; i <= 4; i++) {
 }
 
 // Add class 'active' to section when near top of viewport
-
 const section = document.querySelectorAll('section')
 const SetActiveSection = function(){
             section.forEach(function(v) {
